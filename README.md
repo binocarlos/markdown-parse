@@ -1,62 +1,70 @@
-ravens
-======
+markdown-parse
+==============
 
-node.js contact form handler using ReCaptcha
+convert a markdown file into HTML and extract YAML front matter
 
 ## installation
 
 ```
-$ npm install ravens
+$ npm install markdown-parse
 ```
 
 ## usage
 
-```js
-var Ravens = require('ravens');
+From a markdown file like this:
 
-var ravens = Ravens({
-	recaptcha_public_key:'...',
-	recaptcha_private_key:'...'
-})
+```markdown
+---
+apples: hello
+list:
+  - 5
+  - 10
+map:
+  apple: 1
+  orange: 2
+---
 
-ravens.on('send', function(formdata){
+hello world
 
-	// this formdata has been validated by ReCaptcha
-	// you can use it to send an email or do whatever
-
-})
-
-var app = express();
-
-// mount the form submit route onto the express application
-app.use('/contactsubmit', ravens.handler());
+```
+some code
 ```
 
-## Ravens(appconfig)
+ * list 1
+ * list 2
+```
 
-create a new express handler with the following properties:
+You can process it:
 
- * recaptcha_public_key - the public key for your recaptcha account
- * recaptcha_private_key - the private key for your recaptcha account 
+```js
+var parser = require('markdown-parse');
 
-## events
+var content = fs.readFileSync(__dirname + '/testpage.md', 'utf8')	
 
-these events are emitted by a ravens instance:
+parser(content, function(err, result){
 
-### emit('send', formdata)
+	console.log('the original body:')
+	console.log(result.body)
 
-gives a chance to mess with the formdata before the emails are sent
+	console.log('the html:')
+	console.log(result.html)
 
-## form data
+	console.log('the front matter:')
+	console.dir(result.attributes)
+})
+```
 
-When you submit formdata to the handler - the request body must be JSON and must contain the following fields:
+## api
 
- * recaptcha_challenge_field
- * recaptcha_response_field
+### `parser(text, callback(err, result){})`
 
-These are acquired by using the [ReCaptcha client libraries](https://www.google.com/recaptcha/admin/create).
+Process a markdown string that has optional front-matter
 
-There is an angular plugin for Ravens that renders a nice contact form with Recaptcha Plugin built in - [ng-ravens](https://github.com/binocarlos/ng-ravens).
+The result has the following attributes:
+
+ * body - the original markdown body
+ * html - the converted HTML body
+ * attributes - the front-matter properties
 
 ### license
 
