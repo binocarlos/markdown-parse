@@ -17,6 +17,9 @@ tape('process the test file', function(t){
 		t.deepEqual(result.attributes.list, [5, 10], 'list')
 		t.deepEqual(result.attributes.map, {apple:1,orange:2}, 'map')
 
+		t.equal(result.body, '\nhello world\n\n```\nsome code\n```\n\n * list 1\n * list 2', 'body')
+		t.equal(result.html, '<p>hello world</p>\n<pre><code>some code\n</code></pre><ul>\n<li>list 1</li>\n<li>list 2</li>\n</ul>\n', 'html')
+
 		t.end()
 	})
 
