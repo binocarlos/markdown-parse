@@ -1,6 +1,6 @@
 {
   "name": "markdown-parse",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parse markdown files with front-matter into JSON with a HTML string property for the body",
   "main": "index.js",
   "scripts": {
