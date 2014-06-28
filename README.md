@@ -26,10 +26,6 @@ map:
 
 hello world
 
-```
-some code
-```
-
  * list 1
  * list 2
 ```
