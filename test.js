@@ -26,3 +26,22 @@ tape('process the test file', function(t){
 
 	
 })
+
+
+tape('process the simple file', function(t){
+	var content = fs.readFileSync(__dirname + '/plaintest.md', 'utf8')	
+
+	parser(content, function(err, result){
+		if(err){
+			t.fail(err, 'process result')
+			t.end()
+			return
+		}
+
+		t.equal(Object.keys(result.attributes).length, 0, 'no attributes but is defined')
+		t.end()
+	})
+
+
+	
+})
