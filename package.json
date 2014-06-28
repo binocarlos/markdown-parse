@@ -1,0 +1,32 @@
+{
+  "name": "markdown-parse",
+  "version": "0.0.1",
+  "description": "Parse markdown files with front-matter into JSON with a HTML string property for the body",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/binocarlos/markdown-parse.git"
+  },
+  "keywords": [
+    "markdown",
+    "front-matter",
+    "parse",
+    "html"
+  ],
+  "author": "Kai Davenport",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binocarlos/markdown-parse/issues"
+  },
+  "homepage": "https://github.com/binocarlos/markdown-parse",
+  "dependencies": {
+    "marked": "^0.3.2",
+    "front-matter": "^0.2.0"
+  },
+  "devDependencies": {
+    "tape": "^2.13.3"
+  }
+}
