@@ -24,7 +24,10 @@
   "homepage": "https://github.com/binocarlos/markdown-parse",
   "dependencies": {
     "marked": "^0.3.2",
-    "front-matter": "^0.2.0"
+    "front-matter": "^0.2.0",
+    "duplexer": "^0.1.1",
+    "through2": "^0.5.1",
+    "concat-stream": "^1.4.6"
   },
   "devDependencies": {
     "tape": "^2.13.3"
