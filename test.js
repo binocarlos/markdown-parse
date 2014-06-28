@@ -1,7 +1,7 @@
 var tape = require('tape')
 var parser = require('./')
 var fs = require('fs')
-
+var concat = require('concat-stream')
 
 tape('process the test file', function(t){
 	var content = fs.readFileSync(__dirname + '/testpage.md', 'utf8')	
@@ -43,5 +43,20 @@ tape('process the simple file', function(t){
 	})
 
 
+	
+})
+
+
+tape('process using the stream method', function(t){
+
+	var file = fs.createReadStream(__dirname + '/plaintest.md', 'utf8')
+	var parser = parser.stream()
+
+	file.pipe(parser).pipe(concat(function(output){
+		console.log('-------------------------------------------');
+		console.log('output')
+		console.log(output)
+		t.end()
+	}))
 	
 })
