@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "description": "Parse markdown files with front-matter into JSON with a HTML string property for the body",
   "main": "index.js",
+  "bin": {
+    "markdown-parse": "./cli.js"
+  },
   "scripts": {
     "test": "node test.js"
   },
