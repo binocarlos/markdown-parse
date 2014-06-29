@@ -27,7 +27,10 @@
     "front-matter": "^0.2.0",
     "duplexer": "^0.1.1",
     "through2": "^0.5.1",
-    "concat-stream": "^1.4.6"
+    "concat-stream": "^1.4.6",
+    "minimist": "^0.2.0",
+    "cli-path-resolve": "0.0.2",
+    "cli-streams": "0.0.2"
   },
   "devDependencies": {
     "tape": "^2.13.3"
