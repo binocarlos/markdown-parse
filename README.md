@@ -63,6 +63,29 @@ The result has the following attributes:
  * html - the converted HTML body
  * attributes - the front-matter properties
 
+## cli
+
+The cli interface can be used if you install markdown-parse globally.
+
+```
+$ npm install markdown-parse -g
+```
+
+```
+usage: markdown-parse [options]
+
+options:
+
+  --input, -i - a path to a file to use as input (stdin is default)
+  --output, -o - a path to a file to write the output (stdout is default)
+```
+
+An example of piping a markdown through the converter into a .json file
+
+```
+$ cat mypage.md | markdown-parse > mypage.json
+```
+
 ### license
 
 MIT

@@ -50,12 +50,11 @@ tape('process the simple file', function(t){
 tape('process using the stream method', function(t){
 
 	var file = fs.createReadStream(__dirname + '/plaintest.md', 'utf8')
-	var parser = parser.stream()
+	var p = parser.stream()
 
-	file.pipe(parser).pipe(concat(function(output){
-		console.log('-------------------------------------------');
-		console.log('output')
-		console.log(output)
+	file.pipe(p).pipe(concat(function(output){
+		output = JSON.parse(output.toString())
+		t.ok(output.html.indexOf('<p>hello world</p>')==0, 'the output is correct')
 		t.end()
 	}))
 	
